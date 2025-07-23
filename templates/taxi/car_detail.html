@@ -9,7 +9,7 @@
     <a href="{% url 'taxi:car-update' pk=car.id %}" class="btn btn-secondary link-to-page">
       Update
     </a>
-  {% if user in car.drivers.all %}
+  {% if user.is_authenticated and user in car.drivers.all and user.driver %}
     <a href="{% url 'taxi:car-delete-user' car.id %}">Remove me from this car</a>
     {% else %}
     <a href="{% url 'taxi:car-add-user' car.id %}">Add me for this car</a>
